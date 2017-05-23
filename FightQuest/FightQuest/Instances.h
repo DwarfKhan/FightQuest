@@ -13,7 +13,7 @@ Fighter fTemplateRogue = { "", 90, 25, 30, 25,0 };
 //smith Items
 Potion pWhetstone = { 5, "Whetstone", "Small oily stone used to sharpen a blade. Could probably work on the edge of a shield, too. This effects stacks, but wears off over time.",fPlayer.mDamage,6,1 };
 Equipment eHelm = { 150, "Helm", "A helm... et. It's a helmet.",fPlayer.eHead,fPlayer.mDefence,15 };
-Equipment gBreastplate = { 300, "Breastplate","A metal plate used to cover your breast. I wonder how much time the smith wasted putting nipples on.",fPlayer.eTorso,fPlayer.mDefence,20 };
+Equipment eBreastplate = { 300, "Breastplate","A metal plate used to cover your breast. I wonder how much time the smith wasted putting nipples on.",fPlayer.eTorso,fPlayer.mDefence,20 };
 
 
 //alchemy items

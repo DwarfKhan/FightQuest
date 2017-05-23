@@ -83,6 +83,30 @@ void Inventory(int choice = 0, int index = 1) {
  }
 }
 
+void Equipment(int choice = 0, int index = 1) {
+	while (true) {
+		index = 1;
+	system("cls");
+	cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
+	cout << "                     Equipment" << endl;
+	eHelm.EquipmentDisplay(index);
+	eBreastplate.EquipmentDisplay(index);
+	cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
+	cout << "Make a number selection. Enter 0 to return to the barracks." << endl;
+	cin >> choice;
+	if (choice == 0) {
+		break;
+	}
+	else if (choice == eHelm.mInventoryPosition) {
+		eHelm.ExamineEquipment(fPlayer);
+	}
+	else if (choice == eBreastplate.mInventoryPosition) {
+		eBreastplate.ExamineEquipment(fPlayer);
+	}
+
+	}
+}
+
 // loops the shop sequence until the playr decides to leave.
 void ShopSequence() {
 	while (true) {
@@ -105,7 +129,7 @@ void ShopSequence() {
 				std::cout << "  #  Cost  Item" << std::endl;
 				pWhetstone.ShopDisplay(1);
 				eHelm.ShopDisplay(2);
-				gBreastplate.ShopDisplay(3);
+				eBreastplate.ShopDisplay(3);
 				std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
 				std::cout << "Enter a number to view an item." << std::endl;
 				std::cout << "Enter 0 to exit the shop." << std::endl;
@@ -121,7 +145,7 @@ void ShopSequence() {
 					eHelm.ExamineShopItem(fPlayer);
 				}
 				else if (plyrNumChoice == 3) {
-					gBreastplate.ExamineShopItem(fPlayer);
+					eBreastplate.ExamineShopItem(fPlayer);
 				}
 			}
 		}
@@ -206,12 +230,15 @@ void Barracks(int choice = 0) {
 	cout << "        6:  Give up and Submit to JEFFREY" << endl;
 	cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
 	cin >> choice;
-	if (choice == 1) {
+	if (choice == 0) {
+		Inventory();
+	}
+	else if (choice == 1) {
+		Equipment();
+	}
+	else if (choice == 2) {
 		//TODO
 		//Arena();
-	}
-	else if (choice == 0) {
-		Inventory();
 	}
 	else if (choice == 3) {
 		ShopSequence();

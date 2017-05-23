@@ -15,13 +15,15 @@ Potion::~Potion()
 
 void Potion::Use(int numberBeingUsed)
 {
-	if (numberBeingUsed >= mInPlayerInventory) {
+	if (numberBeingUsed <= mInPlayerInventory) {
 		mInuse += numberBeingUsed;
 		mEffectedAttribute += (mModifier * numberBeingUsed);
 		mInPlayerInventory -= numberBeingUsed;
 	}
 	else {
+		system("cls");
 		std::cout << "You don't have "<< numberBeingUsed << " " << mName << "(s) to use." << std::endl;
+		system("pause");
 	}
 }
 
