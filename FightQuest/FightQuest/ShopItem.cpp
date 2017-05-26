@@ -37,7 +37,7 @@ void ShopItem::ExamineShopItem(Fighter &player, int choice)
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
 	std::cout << "How many would you like to buy?" << std::endl;
 	std::cout << "Enter 0 to return to the shop." << std::endl;
-	std::cin >> choice;
+	choice = GetPlayerInput();
 	if (choice == 0) {
 		return;
 	}
@@ -59,7 +59,7 @@ void ShopItem::ExamineInventoryItem(Fighter &player, int resaleValue, int choice
 	std::cout << "You currently have:" << mInPlayerInventory << std::endl;
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
 	cout << "How many would you like to sell? Enter 0 to return." << endl;
-	cin >> choice;
+	choice = GetPlayerInput();
 	if (choice == 0) {
 		break;
 	}

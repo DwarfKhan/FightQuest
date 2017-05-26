@@ -1,4 +1,7 @@
-﻿  Equipment.cpp
-c:\users\dwarfkhan\documents\work\cs 212 new\textgame\fightquest\fightquest\equipment.cpp(64): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+﻿  ShopItem.cpp
+c:\users\dwarfkhan\documents\work\cs 212 new\textgame\fightquest\fightquest\shopitem.cpp(54): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Potion.cpp
+c:\users\dwarfkhan\documents\work\cs 212 new\textgame\fightquest\fightquest\potion.cpp(46): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
   FightQuest.vcxproj -> C:\Users\DwarfKhan\Documents\work\CS 212 New\TextGame\FightQuest\Debug\FightQuest.exe
   FightQuest.vcxproj -> C:\Users\DwarfKhan\Documents\work\CS 212 New\TextGame\FightQuest\Debug\FightQuest.pdb (Partial PDB)

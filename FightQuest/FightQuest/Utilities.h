@@ -2,6 +2,12 @@
 #include "Instances.h"
 
 
+int GetPlayerInput() {
+	char choice[100];
+	cin >> choice;
+	return atoi(choice);
+}
+
 
 // Makes a random number between min and max. Use difference to ensure that two dice rolls done at the same time will not always produce the same result.
 int DiceRoll(int min, int max) {
@@ -198,7 +204,6 @@ int GenAi(int difficulty, int playerType) {
 	return 0;
 }
 
-
 void CharacterCreation() {
 
 
@@ -224,7 +229,7 @@ void CharacterCreation() {
 		std::cout << "   / \\        / \\        / \\ " << std::endl;
 		std::cout << "-------------------------------------------------------------" << std::endl;
 
-		std::cin >> plyrNumChoice;
+		plyrNumChoice = GetPlayerInput();
 		system("cls");
 
 		std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
@@ -333,3 +338,4 @@ void CharacterCreation() {
 	GenAi(difficulty, plyrType);
 
 }
+

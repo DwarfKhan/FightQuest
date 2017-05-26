@@ -79,7 +79,7 @@ void Equipment::ExamineEquipment(Fighter &player, int resaleValue, int choice)
 		cout << "2: Un-Equip Item" << endl;
 		cout << "3: Sell Item" << endl;
 
-		cin >> choice;
+		choice = GetPlayerInput();
 		if (choice == 0) {
 			break;
 		}

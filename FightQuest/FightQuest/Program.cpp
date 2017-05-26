@@ -29,7 +29,7 @@ int MainMenu(int choice = 0) {
 		cout << "                    3:     Options" << endl;
 		cout << "                    4:    Exit Game" << endl;
 		cout << "0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0O0" << endl;
-		cin >> choice;
+		choice = GetPlayerInput();
 		if ((choice > 0) && (choice < 5)) {
 			return choice;
 		}
@@ -55,7 +55,7 @@ void Inventory(int choice = 0, int index = 1) {
 	pBearAdrenaline.InventoryDisplay(index);
 	cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
 	cout << "Make a number selection. Enter 0 to return to the barracks." << endl;
-	cin >> choice;
+	choice = GetPlayerInput();
 	if (choice == 0) {
 		break;
 	}
@@ -93,7 +93,7 @@ void Equipment(int choice = 0, int index = 1) {
 	eBreastplate.EquipmentDisplay(index);
 	cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
 	cout << "Make a number selection. Enter 0 to return to the barracks." << endl;
-	cin >> choice;
+	choice = GetPlayerInput();
 	if (choice == 0) {
 		break;
 	}
@@ -118,7 +118,7 @@ void ShopSequence() {
 		std::cout << "2 - Alchemist" << std::endl;
 		std::cout << "3 - Shady man in trench coat" << std::endl;
 		std::cout << "-------------------------------------------------------------" << std::endl;
-		std::cin >> plyrNumChoice;
+		plyrNumChoice = GetPlayerInput();
 		if (plyrNumChoice == 1) {
 			while (true) {
 				system("cls");
@@ -134,7 +134,7 @@ void ShopSequence() {
 				std::cout << "Enter a number to view an item." << std::endl;
 				std::cout << "Enter 0 to exit the shop." << std::endl;
 				std::cout << "-------------------------------------------------------------" << std::endl;
-				std::cin >> plyrNumChoice;
+				plyrNumChoice = GetPlayerInput();
 				if (plyrNumChoice == 0) {
 					break;
 				}
@@ -164,7 +164,7 @@ void ShopSequence() {
 				std::cout << "Enter a number to view an item." << std::endl;
 				std::cout << "Enter 0 to exit the shop." << std::endl;
 				std::cout << "-------------------------------------------------------------" << std::endl;
-				std::cin >> plyrNumChoice;
+				plyrNumChoice = GetPlayerInput();
 				if (plyrNumChoice == 0) {
 					break;
 				}
@@ -194,7 +194,7 @@ void ShopSequence() {
 				std::cout << "Enter a number to view an item." << std::endl;
 				std::cout << "Enter 0 to exit the shop." << std::endl;
 				std::cout << "-------------------------------------------------------------" << std::endl;
-				std::cin >> plyrNumChoice;
+				plyrNumChoice = GetPlayerInput();
 				if (plyrNumChoice == 0) {
 					break;
 				}
@@ -217,6 +217,7 @@ void ShopSequence() {
 
 // Main hub of the game
 void Barracks(int choice = 0) {
+
 	while (true) {
 		system("cls");
 	cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
@@ -229,7 +230,8 @@ void Barracks(int choice = 0) {
 	cout << "        5:        Visit the Lenders" << endl;
 	cout << "        6:  Give up and Submit to JEFFREY" << endl;
 	cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
-	cin >> choice;
+	choice = GetPlayerInput();
+
 	if (choice == 0) {
 		Inventory();
 	}

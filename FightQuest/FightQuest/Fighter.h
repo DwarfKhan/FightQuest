@@ -17,3 +17,4 @@ public:
 	bool eHead, eTorso, eLegs, eFeet, eHands, eWeapon;
 };
 
+int GetPlayerInput();

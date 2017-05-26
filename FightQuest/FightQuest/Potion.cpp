@@ -54,7 +54,7 @@ void Potion::ExaminePotion(Fighter & player, int choice, int resaleValue)
 		cout << "1: Use Item" << endl;
 		cout << "2: Sell Item" << endl;
 
-		cin >> choice;
+		choice = GetPlayerInput();
 		if (choice == 0) {
 			break;
 		}
