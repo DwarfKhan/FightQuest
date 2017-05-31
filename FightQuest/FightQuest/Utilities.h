@@ -92,8 +92,9 @@ int Attack(Fighter attacker, Fighter defender) {
 
 }
 
-//Bashes gPlayer and gAi together until one or both dies
-int Fight() {
+//Bashes gPlayer and gAi together until one or both dies, returns 0 for player win, 1 for player loss, 3 for draw.
+int Fight(int stakes = 100) {
+	system("cls");
 	std::cout << "Hero Status" << std::endl;
 	fPlayer.displayStats();
 	std::cout << "Adversary Status" << std::endl;
@@ -105,16 +106,12 @@ int Fight() {
 
 	std::cout << "Lower the gates!" << std::endl;
 	system("pause");
-	if (fPlayer.mHealth <= fPlayer.mMaxHealth) {
-		fPlayer.mHealth = fPlayer.mMaxHealth;
-	}
-	fAi.mHealth = fAi.mMaxHealth;
 	system("cls");
 	std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
 	std::cout << fPlayer.mName << " vs " << fAi.mName << std::endl;
 	std::cout << fPlayer.mHealth << "    " << fAi.mHealth << std::endl;
 	std::cout << "-------------------------------------------------------------" << std::endl;
-	system("pause");
+	Sleep(1000);
 	while (true) {
 		// Do battle Calculations below this line
 		if (Attack(fPlayer, fAi) == 1) {
@@ -139,14 +136,45 @@ int Fight() {
 
 
 		if ((fPlayer.mHealth <= 0) && (fAi.mHealth <= 0)) {
+			system("cls");
+			std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
+			std::cout << "We'll call it a draw, then." << std::endl;
+			cout << "You get no winnings, but you will live to fight again." << endl;
+			std::cout << "-------------------------------------------------------------" << std::endl;
+			system("pause");
+			if (fPlayer.mHealth <= fPlayer.mMaxHealth) {
+				fPlayer.mHealth = fPlayer.mMaxHealth;
+			}
+			fAi.mHealth = fAi.mMaxHealth;
 			return 3;
 			break;
 		}
 		else if (fPlayer.mHealth <= 0) {
+			system("cls");
+			std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
+			std::cout << "You lost, please pick a better fighter next time." << std::endl;
+			std::cout << "-------------------------------------------------------------" << std::endl;
+			system("pause");
+			if (fPlayer.mHealth <= fPlayer.mMaxHealth) {
+				fPlayer.mHealth = fPlayer.mMaxHealth;
+			}
+			fAi.mHealth = fAi.mMaxHealth;
 			return 1;
 			break;
 		}
 		else if (fAi.mHealth <= 0) {
+			system("cls");
+			std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
+			std::cout << "You won by a margin of " << fPlayer.mHealth << " health." << std::endl;
+			cout << "Winnings: " << stakes << " gold coins" << endl;
+			std::cout << "-------------------------------------------------------------" << std::endl;
+			system("pause");
+			fPlayer.mVictoriousFights++;
+			fPlayer.mMoney += stakes;
+			if (fPlayer.mHealth <= fPlayer.mMaxHealth) {
+				fPlayer.mHealth = fPlayer.mMaxHealth;
+			}
+			fAi.mHealth = fAi.mMaxHealth;
 			return 0;
 			break;
 		}
@@ -200,7 +228,20 @@ int GenAi(int difficulty, int playerType) {
 		}
 	}
 	fAi.mName = GenRandomName();
-	fAi.mLuck = ((difficulty / 10) + fPlayer.mVictoriousFights);
+	fAi.mLuck = ((difficulty / 10) + fPlayer.mVictoriousFights + DiceRoll(0,3));
+	if (fPlayer.mVictoriousFights > 3) {
+	fAi.mAttack += DiceRoll(0, (difficulty / 10));
+	fAi.mDamage += DiceRoll(0, (difficulty / 10));
+	fAi.mDefence += DiceRoll(0, (difficulty / 10));
+	fAi.mMaxHealth += DiceRoll(0, (difficulty / 10));
+	if (DiceRoll(0,1) > 0) {
+		fAi.mVictoriousFights = fPlayer.mVictoriousFights + DiceRoll(0, 5);
+	}
+	else {
+		fAi.mVictoriousFights = fPlayer.mVictoriousFights - DiceRoll(0, 5);
+	}
+	}
+	fAi.mHealth = fAi.mMaxHealth;
 	return 0;
 }
 
@@ -289,7 +330,7 @@ void CharacterCreation() {
 			std::cout << "              " << std::endl;
 			std::cout << "              " << std::endl;
 			std::cout << "                               " << std::endl;
-			fPlayer = { plyrName, 100000, 1000000, 100000, 100000, 10 };
+			fPlayer = { plyrName, 1000000, 1000000, 1000000, 1000000, 20};
 			plyrType = 1;
 			fPlayer.mMoney = 100000000;
 			break;
@@ -320,7 +361,7 @@ void CharacterCreation() {
 					std::cout << "       \\|                        " << std::endl;
 					std::cout << "                               " << std::endl;
 					std::cout << "-------------------------------------------------------------" << std::endl;
-					fPlayer.mLuck = fPlayer.mLuck + 5;
+					fPlayer.mLuck += 5;
 					break;
 				}
 				else {

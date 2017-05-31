@@ -1,7 +1,5 @@
-﻿  ShopItem.cpp
-c:\users\dwarfkhan\documents\work\cs 212 new\textgame\fightquest\fightquest\shopitem.cpp(54): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  Potion.cpp
-c:\users\dwarfkhan\documents\work\cs 212 new\textgame\fightquest\fightquest\potion.cpp(46): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
+﻿  Program.cpp
+c:\users\dwarfkhan\documents\work\cs 212 new\textgame\fightquest\fightquest\utilities.h(14): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\dwarfkhan\documents\work\cs 212 new\textgame\fightquest\fightquest\utilities.h(51): warning C4715: 'GenRandomName': not all control paths return a value
   FightQuest.vcxproj -> C:\Users\DwarfKhan\Documents\work\CS 212 New\TextGame\FightQuest\Debug\FightQuest.exe
   FightQuest.vcxproj -> C:\Users\DwarfKhan\Documents\work\CS 212 New\TextGame\FightQuest\Debug\FightQuest.pdb (Partial PDB)

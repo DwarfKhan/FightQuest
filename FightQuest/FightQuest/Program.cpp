@@ -215,6 +215,52 @@ void ShopSequence() {
 	}
 }
 
+void Bet(int choice = 0) {
+	system("cls");
+	cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
+	cout << "                     Money:" << fPlayer.mMoney << endl;
+	cout << "How much would you like to bet on the Fight?" << endl;
+	cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
+	choice = GetPlayerInput();
+	fPlayer.mMoney -= choice;
+	betAmount += choice;
+}
+
+void Arena(int choice = 0) {
+	while (true) {
+		system("cls");
+	cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
+	cout << "               You are in the Arena" << endl;
+	cout << "                   Current Bet: "<< betAmount << endl;
+	cout << "               You Have Won " << fPlayer.mVictoriousFights << " Times" << endl;
+	cout << "        1:             Inventory" << endl;
+	cout << "        2:             Equipment" << endl;
+	cout << "        3:     Place a Bet on Yourself" << endl;
+	cout << "        4:          Begin the Fight" << endl;
+	cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
+	cout << "Make a number selection. Enter 0 to return." << endl;
+	choice = GetPlayerInput();
+
+	if (choice == 1) {
+		Inventory();
+	}
+	else if (choice == 2) {
+		Equipment();
+	}
+	else if (choice == 3) {
+		Bet();
+	}
+	else if (choice == 4) {
+		GenAi((10*fPlayer.mVictoriousFights),plyrType);
+		fightWinner = Fight((betAmount + (fPlayer.mVictoriousFights * 5)));
+		betAmount = 0;
+	}
+	else if (choice == 0) {
+		break;
+	}
+	}
+}
+
 // Main hub of the game
 void Barracks(int choice = 0) {
 
@@ -222,38 +268,37 @@ void Barracks(int choice = 0) {
 		system("cls");
 	cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
 	cout << "               You are in the barracks." << endl;
-	cout << "        0:             Inventory" << endl;
-	cout << "        1:             Equipment" << endl;
-	cout << "        2:         Enter the Arena" << endl;
-	cout << "        3:         Enter the Market" << endl;
-	cout << "        4:    Bargain for Your Freedom" << endl;
-	cout << "        5:        Visit the Lenders" << endl;
-	cout << "        6:  Give up and Submit to JEFFREY" << endl;
+	cout << "        1:             Inventory" << endl;
+	cout << "        2:             Equipment" << endl;
+	cout << "        3:         Enter the Arena" << endl;
+	cout << "        4:         Enter the Market" << endl;
+	cout << "        5:    Bargain for Your Freedom" << endl;
+	cout << "        6:        Visit the Lenders" << endl;
+	cout << "        7:  Give up and Submit to JEFFREY" << endl;
 	cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+" << endl;
 	choice = GetPlayerInput();
 
-	if (choice == 0) {
+	if (choice == 1) {
 		Inventory();
 	}
-	else if (choice == 1) {
+	else if (choice == 2) {
 		Equipment();
 	}
-	else if (choice == 2) {
-		//TODO
-		//Arena();
-	}
 	else if (choice == 3) {
-		ShopSequence();
+		Arena();
 	}
 	else if (choice == 4) {
-		//TODO
-		//AttemptFreedomPurchase();
+		ShopSequence();
 	}
 	else if (choice == 5) {
 		//TODO
-		//Lenders();
+		//AttemptFreedomPurchase();
 	}
 	else if (choice == 6) {
+		//TODO
+		//Lenders();
+	}
+	else if (choice == 7) {
 		//TODO
 		//JEFEREY();
 	}
@@ -272,28 +317,10 @@ int main(int argc, char *argv[])
 		fightWinner = Fight();
 
 		if (fightWinner == 0) {
-			system("cls");
-			std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
-			std::cout << "You won, good job!" << std::endl;
-			std::cout << "-------------------------------------------------------------" << std::endl;
-			fPlayer.mVictoriousFights = 1;
-			fPlayer.mMoney += 100;
-			system("pause");
 			Barracks();
 		}
-		else if (fightWinner == 1) {
-			system("cls");
-			std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
-			std::cout << "You lost, please pick a better fighter next time." << std::endl;
-			std::cout << "-------------------------------------------------------------" << std::endl;
-			system("pause");
-		}
 		else if (fightWinner == 3) {
-			system("cls");
-			std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
-			std::cout << "We'll call it a draw, then. Please try again." << std::endl;
-			std::cout << "-------------------------------------------------------------" << std::endl;
-			system("pause");
+			Barracks();
 		}
 
 		}

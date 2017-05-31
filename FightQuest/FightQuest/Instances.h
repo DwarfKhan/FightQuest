@@ -36,3 +36,4 @@ int fightWinner = 0; //0 = player, 1 = AI, 3 = draw
 char plyrName[15] = " ";
 int randomizer = 0; //used in dice rolls to keep them random
 int color = 0x0F;
+int betAmount = 0; //How much the player is currently betting
