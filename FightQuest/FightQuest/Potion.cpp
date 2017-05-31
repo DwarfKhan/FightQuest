@@ -27,6 +27,7 @@ void Potion::Use(int numberBeingUsed)
 	}
 }
 
+//this makes it wear off
 void Potion::WearOff()
 {
 	if (mInuse >= mDecayRate) {
